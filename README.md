@@ -24,33 +24,3 @@ TESS has a 3.3V and 0.9V DC-DC regulator onboard whilst the T113-S3 has 2 LDO's 
 ## Pinout
 ![TESS 00 pinout](media/TESS_Pinout.png)
 
-## Elecrow PCBA quotation package (whatnick fork)
-
-The upstream Rev 00 exports are preserved. A ten-board **RFQ-only** package is
-in [`manufacturing/elecrow-rev00`](manufacturing/elecrow-rev00).
-
-Upload `TESS-rev00-Elecrow-BOM.xlsx` as BOM,
-`TESS-rev00-Elecrow-Gerbers.zip` as Gerbers, and
-`TESS-rev00-Elecrow-Assembly.zip` as Other Files. BOM quantities are **per board**;
-request **10 assemblies**. The assembly archive includes both-side positions,
-upstream board drawings, schematic sheets, 3D overviews, paste layers and notes.
-
-**Do not authorise manufacture yet.** Read `PCBA-NOTES.txt` and `manifest.json`
-for sourcing conflicts, castellated-edge requirements, uncertain stackup and
-thickness, and first-article/test holds. The reported upstream thickness is
-about 0.743 mm, not a confirmed fabrication specification. Native CAD sources
-and ERC/DRC reports are not present; no clean design-check or DFM claim is made.
-No supplier upload, quote submission, purchase or payment has been performed.
-
-Regenerate and validate with Python 3.11 or later:
-
-```powershell
-python -m pip install -r requirements-manufacturing.txt
-python -m unittest discover -s tests -v
-python scripts\prepare_elecrow.py --boards 10
-```
-
-Copper, mask and silk are copied unchanged. The sole outline retains the ODB
-analytic arcs; separate metric PTH/NPTH drills retain ODB hole centres and
-diameters. Source/output hashes and archive-member hashes accompany the package.
-
